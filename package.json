@@ -1,0 +1,93 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "git+https://github.com/redwind/react-native-photo-browser",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "git+https://github.com/redwind/react-native-photo-browser",
+        "spec": "git+https://github.com/redwind/react-native-photo-browser.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:redwind/react-native-photo-browser.git",
+          "sshUrl": "git+ssh://git@github.com/redwind/react-native-photo-browser.git",
+          "httpsUrl": "git+https://github.com/redwind/react-native-photo-browser.git",
+          "gitUrl": "git://github.com/redwind/react-native-photo-browser.git",
+          "shortcut": "github:redwind/react-native-photo-browser",
+          "directUrl": "https://raw.githubusercontent.com/redwind/react-native-photo-browser/master/package.json"
+        }
+      },
+      "/Users/HongPhong/Data/Develope/React-native/Projects/Bstar/BBox"
+    ]
+  ],
+  "_from": "git+https://github.com/redwind/react-native-photo-browser.git",
+  "_id": "react-native-photo-browser@0.3.1",
+  "_inCache": true,
+  "_location": "/react-native-photo-browser",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "git+https://github.com/redwind/react-native-photo-browser",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "git+https://github.com/redwind/react-native-photo-browser",
+    "spec": "git+https://github.com/redwind/react-native-photo-browser.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:redwind/react-native-photo-browser.git",
+      "sshUrl": "git+ssh://git@github.com/redwind/react-native-photo-browser.git",
+      "httpsUrl": "git+https://github.com/redwind/react-native-photo-browser.git",
+      "gitUrl": "git://github.com/redwind/react-native-photo-browser.git",
+      "shortcut": "github:redwind/react-native-photo-browser",
+      "directUrl": "https://raw.githubusercontent.com/redwind/react-native-photo-browser/master/package.json"
+    }
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/redwind/react-native-photo-browser.git#717047f2eb1a2054385dc0a178bd98f1be0a38b9",
+  "_shasum": "54fc7d0fc5e42b3a5da6d6d308722fdd58d1ada4",
+  "_shrinkwrap": null,
+  "_spec": "git+https://github.com/redwind/react-native-photo-browser",
+  "_where": "/Users/HongPhong/Data/Develope/React-native/Projects/Bstar/BBox",
+  "author": {
+    "name": "Halil Bilir",
+    "email": "hbilir@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/halilb/react-native-photo-browser/issues"
+  },
+  "dependencies": {
+    "react-native-progress": "^3.2.0"
+  },
+  "description": "Local and remote photo browser with captions, selections and grid view support for react native.",
+  "devDependencies": {},
+  "gitHead": "717047f2eb1a2054385dc0a178bd98f1be0a38b9",
+  "homepage": "https://github.com/halilb/react-native-photo-browser#readme",
+  "keywords": [
+    "react",
+    "react-component",
+    "react-native",
+    "photo browser",
+    "image gallery",
+    "media gallery",
+    "ios",
+    "android"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "react-native-photo-browser",
+  "optionalDependencies": {},
+  "readme": "# React Native Photo Browser\n\nA full screen image gallery with captions, selections and grid view support for react-native. Layout and API design are inspired by great [MWPhotoBrowser](https://github.com/mwaterfall/MWPhotoBrowser) library.\n\nThe component has both iOS and Android support.\n\n![](screenshots/photo-browser.gif)\n\n![](screenshots/screenshot-1.png)\n![](screenshots/screenshot-2.png)\n\n### Installation \n```npm install react-native-photo-browser --save```\n\n### Properties\n\n| Prop | Type | Description | Default |\n|---|---|---|---|\n|**`style`**|Style|Overrides default container style.|`null`|\n|**`mediaList`**|Array\\<Media\\>|List of [media objects](#media-object) to display.|`[]`|\n|**`initialIndex`**|Number|Sets the visible photo initially.|`0`|\n|**`alwaysShowControls`**|Boolean|Allows to control whether the bars and controls are always visible or whether they fade away to show the photo full.|`false`|\n|**`displayActionButton`**|Boolean|Show action button to allow sharing, copying, etc.|`false`|\n|**`displayNavArrows`**|Boolean|Whether to display left and right nav arrows on bottom toolbar.|`false`|\n|**`displayTopBar`**|Boolean|Whether to display top bar.|`false`|\n|**`enableGrid`**|Boolean|Whether to allow the viewing of all the photo thumbnails on a grid.|`true`|\n|**`startOnGrid`**|Boolean|Whether to start on the grid of thumbnails instead of the first photo.|`false`|\n|**`displaySelectionButtons`**|Boolean|Whether selection buttons are shown on each image.|`false`|\n|**`useCircleProgress`**_iOS_|Boolean|Displays Progress.Circle instead of default Progress.Bar for full screen photos. Check [Progress](#progress-component) section for more info.|`false`|\n|**`onSelectionChanged`**|Function|Called when a media item is selected or unselected.|`(media, index, isSelected) => {}`|\n|**`onActionButton`**|Function|Called when action button is pressed for a photo. Your application should handle sharing process, please see [Sharing](#sharing) section for more information. If you don't provide this method, action button tap event will simply be ignored.|`(media, index) => {}`|\n|**`onBack`**|Function|Called when back button is tapped.|`() => {}`|\n|**`itemPerRow`**|Number|Sets images amount in grid row.|`3`|\n|**`onPhotoLongPress`**|Function|Called when a long press trigged on a photo.|`() => {}`|\n|**`delayPhotoLongPress`**|Number|The long press delay in `ms`.|`1000`|\n\n### Media Object\n\n```js\nconst media = {\n  thumb: '', // thumbnail version of the photo to be displayed in grid view. actual photo is used if thumb is not provided\n  photo: '', // a remote photo or local media url\n  caption: '', // photo caption to be displayed\n  selected: true, // set the photo selected initially(default is false)\n};\n```\n\n\n### Progress Component\n\n#### Android\n\nBuilt-in [ActivityIndicator](https://facebook.github.io/react-native/docs/activityindicator.html) component is used for Android. Any additional configuration is not needed.\n\n#### iOS\n\n[react-native-progress](https://github.com/oblador/react-native-progress) component is used as progress indicator. The default progress component is `Progress.Bar`. You can also use `Progress.Circle` component by simply using `useCircleProgress` prop, and adding `ReactART` library to your Xcode project. For more information please check out [react-native-progress repo](https://github.com/oblador/react-native-progress#reactart-based-components) and [React Native documentation](http://facebook.github.io/react-native/docs/linking-libraries-ios.html#content).\n\n### Sharing\n\nI tried delivering sharing photo feature but it was complicated to provide for iOS and android out of the box. I now believe it's a better idea to separate sharing logic into another module. Please check out Example project to see a basic ActionSheetIOS implementation for iOS. You may also use available sharing libraries such as [react-native-activity-view](https://github.com/naoufal/react-native-activity-view) and [react-native-share](https://github.com/EstebanFuentealba/react-native-share).\n\n### Examples\n\nSee [PhotoBrowserExample.js](Example/PhotoBrowserExample.js) file.\n\nFollow those steps to run the example:\n\n1. Clone the repo `git clone https://github.com/halilb/react-native-photo-browser && cd react-native-photo-browser/Example`\n2. Install dependencies `npm install`\n3. Follow [official instructions](https://facebook.github.io/react-native/docs/getting-started.html) to run the example project in a simulator or device.\n\n### Roadmap\n- [x] Android support\n- [ ] Improve performance for bigger collections\n- [ ] Video support\n- [ ] Photo zoom\n- [ ] Zooming photos to fill the screen\n\n### Licence\n[MIT](http://opensource.org/licenses/mit-license.html)\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/halilb/react-native-photo-browser.git"
+  },
+  "scripts": {},
+  "version": "0.3.1"
+}
